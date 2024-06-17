@@ -1,0 +1,31 @@
+{
+  "UserTable": {
+    "cols": [
+      "id",
+      "username",
+      "email"
+    ],
+    "table": [
+      {
+        "id": 0,
+        "username": "john",
+        "email": "john@fakemail.com"
+      },
+      {
+        "id": 1,
+        "username": "jane",
+        "email": "jane@fakemail.com"
+      },
+      {
+        "id": 2,
+        "username": "jill",
+        "email": "jill@fakemail.com"
+      },
+      {
+        "id": 3,
+        "username": "lily",
+        "email": "lily@fakemail.com"
+      }
+    ]
+  }
+}

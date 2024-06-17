@@ -51,6 +51,7 @@ class JSONDatabase:
     def execute_full_query(self, query_string, sql_args=None):
         if sql_args is not None:
             query_string = self.replace_vars(query_string, sql_args)
+            #print(f"query after value subs: {query_string}")
         querys = query_string.split(";")
         result = None
         for _query in querys:
@@ -60,7 +61,7 @@ class JSONDatabase:
 
     def execute_single_query(self, query):
         command, *rest = query.split()
-        print(f"command: {command} rest:{rest}")
+        #print(f"command: {command} rest:{rest}")
 
         if command == 'SELECT':
             fields = rest[0]
@@ -81,17 +82,19 @@ class JSONDatabase:
             table = rest[1]
             if rest[2].upper() != "VALUES":
                 raise SQLException("INSERT INTO missing VALUES")
-            print(f"rest: {rest}")
+            #print(f"rest: {rest}")
             val_str = "".join(rest[3:])
+            #print(f"val_str: {val_str}")
             # val_items = re.search("^\(.*\)$", val_str)
             values = val_str[1:][:-1].split(",")
+            #print(f"values after init: {values}")
             for idx, _ in enumerate(values):
                 try:
                     values[idx] = int(_)
                 except ValueError:
                     pass
 
-            # print(values)
+            # print(f"vals: {values}")
             return self.insert(table, values)
         elif command == "DELETE":
             # print("DELETE Command")
