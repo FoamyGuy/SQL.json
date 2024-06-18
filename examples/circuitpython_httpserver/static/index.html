@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SQL</title>
+
+  <style>
+      body {
+          text-align: center;
+          
+      }
+      
+      #search-input-section{
+          margin-top: 100px;
+      }
+
+      #results-section {
+          display: {{ results_display }};
+      }
+  </style>
+</head>
+<body>
+<header>
+  <h2>SQL Injection 101</h2>
+</header>
+<section id="search-input-section">
+  <form method="POST" action="/lookup_username">
+    <p><label for="username">Username Search</label></p>
+    <input type="text" name="username" autofocus autocomplete="off" placeholder="Username e.g. jane">
+    <input type="submit" value="Search">
+  </form>
+</section>
+
+<section id="results-section">
+  <h3>Lookup Results:</h3>
+  <p>{{ results }}</p>
+</section>
+</body>
+</html>

@@ -1,5 +1,6 @@
 import json
 import re
+import time
 
 
 class SQLException(Exception):
@@ -112,6 +113,11 @@ class JSONDatabase:
                 raise SQLException("Expected Table name after DROP TABLE.")
             table = rest[1]
             return self.drop_table(table)
+        elif command == "SLEEP":
+            sleep_time = int(rest[0])
+            time.sleep(sleep_time)
+            return ["SLEPT", sleep_time]
+
         else:
             return "Unsupported command."
 
